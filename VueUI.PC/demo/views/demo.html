@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../ap_ui/styles/style.css" rel="stylesheet" />
+    <link href="../../ap_ui/styles/demo.css" rel="stylesheet" />
+    <script src="../../ap_core/ap_page.js"></script>
+    <script src="../../ap_scripts/basic/vue.js"></script>
+    <script src="../../ap_core/ap_ui.js"></script>
+    <script src="../../ap_utility/ajax/ap_ajax.js"></script>
+    <script src="../../ap_utility/ajax/ap_ajaxpackage.js"></script>
+    <script src="../../ap_scripts/basic/jquery-1.9.1.min.js"></script>
+    <script src="../../ap_ui/widget/validate/viewmodels/ap_validate.js"></script>
+    <script src="../../ap_ui/widget/radiobutton/viewmodels/ap_radiobutton.js"></script>
+    <script src="../../ap_ui/widget/checkbox/viewmodels/ap_checkbox.js"></script>
+    <script src="../../ap_ui/widget/input/viewmodels/ap_input.js"></script>
+    <script src="../../ap_ui/widget/select/viewmodels/ap_select.js"></script>
+    <!--<script src="../../ap_ui/widget/button/viewmodels/ap_button.js"></script>-->
+    <script src="../../ap_ui/widget/button/viewmodels/ap_buttons.js"></script>
+    <script src="../../ap_ui/widget/datepicker/viewmodels/ap_datepicker.js"></script>
+    <script src="../../ap_ui/widget/switchbutton/viewmodels/ap_switch.js"></script>
+    <script src="../../ap_ui/widget/textarea/viewmodels/ap_textarea.js"></script>
+    <script src="../../ap_ui/widget/editor/viewmodels/ap_editor.js"></script>
+    <script src="../../ap_ui/widget/table/viewmodels/ap_table.js"></script>
+    <script src="../../ap_ui/widget/pager/viewmodels/ap_pager.js"></script>
+    <script src="../../ap_ui/widget/slider/viewmodels/ap_slider.js"></script>
+    <script src="../../ap_ui/widget/scroll/viewmodels/ap_scroll.js"></script>
+    <script src="../../ap_ui/widget/shuffling/viewmodels/ap_shuffling.js"></script>
+
+    <script src="../../ap_scripts/basic/axios.js"></script>
+    <script src="../../ap_scripts/basic/layer/layer.js"></script>
+    <script src="../../ap_scripts/basic/layer/LayerPK.js"></script>
+
+    <script src="../viewmodels/demo.js"></script>
+</head>
+<body>
+    <form>
+
+        <div class="g-left">
+            <div class="nav-header">
+                AP-UI
+            </div>
+            <div class="side-nav">
+                <ul>
+                    <li class="nav-item">
+                        <a>开发指南</a>
+                        <ul class="sub-nav">
+                            <li class="nav-item">
+                                <a href="#start">开始使用</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tips">注意事项</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a>基础组件</a>
+                        <ul class="sub-nav">
+                            <li class="nav-item">
+                                <a href="#showinput">input</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showbutton">button</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showtextarea">textarea</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showradiobutton">radiobutton</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showcheckbox">checkbox</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showselect">select</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showswitchbutton">switchbutton</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showdatepicker">datepicker</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showtable">table</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showpager">pager</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#showshuffling">shuffling</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="g-main">
+            <div class="g-maincon">
+                <div class="f-clear m-boxs" id="start">
+                    <h2>CDN</h2>
+                    <p> 在页面导入Js和Css文件,先引用ap_page.js,然后vue.js、ap_ui.js,最后UI组件的index.js</p>
+                    <pre data-lang="html"><code class="lang-html">&lt;script src="../../ap_core/ap_page.js"&gt;&lt;/script&gt;
+&lt;script src="../../ap_scripts/basic/vue.js"&gt;&lt;/script&gt;
+&lt;script src="../../ap_core/ap_ui.js"&gt;&lt;/script&gt;
+&lt;script src="../../dist/index.js"&gt;&lt;/script&gt;
+                    </code></pre>
+                </div>                
+
+                <div class="f-clear m-boxs">
+                    <h2>如何使用</h2>
+                    <p>前台页面中定义&lt;ap-input id="a"&gt;&lt;/ap-input&gt;这样的html。</p>
+                    <p>后台ts中如这样var stu = new ap.module.student.stumanage("../workers/studentbll.js");传入相应的bll即Webworker路径。</p>
+                    <p>在页面加载的4个不同阶段进行各种不同的操作，复写相应的4个函数。</p>
+                    <p>initAtInteractive的时候进行页面组件的注册，this.txtSearch = new ap.ui.widget.input("txtSearch");该状态在页面加载的最开始，所以能够将每个自定义组件的UI渲染出来，不会出现白屏现象。</p>
+                    <p>renderData 在该状态下进行静态数据的绑定。</p>
+                    <p>renderDataAsync 在该状态下进行动态数据的绑定，与webworker进行数据的交互。</p>
+                    <p>initAtComplete 在该状态下页面元素全部渲染完毕，相当于window.onload()。</p>
+                </div>
+                <hr />
+
+                <div class="f-clear m-boxs" id="tips">
+                    <h2>注意事项</h2>
+                    <p>1、页面的ts构造函数中，第一个参数是页面bll路径，第二个参数可传可不传，是页面一开始调用的action,action具体是什么下面做说明。</p>
+                    <p>2、action是封装的一个方法，可以与webworker进行数据交互，以/{a}/{b}的形式传递。a指的是页面的方法名，b可以是页面的对象也可以是string，当b是页面对象时 isVue: true, refid: "txtSearch", key: "value" ,按照这样的形式传递的话，可以动态的取到vue组件的值。当然也可以不是Vue的组件，可以定义你自己需要的变量。 </p>
+                    <p>3、所有的页面与webworker的通信都按照一个定好的协议执行。export interface IWorker {fn?: any,args?: any,callback?:any,data?:any}
+                    fn表示页面执行的方法名,args表示页面往webworker传递的参数，callback表示webworker回调的函数值,data表示回调的数据。</p>
+                    <p>4、webworker自定义导入的js在构造函数中导入，arr是自定义导入的js，pathlevel是目录层级，0指的是和ap_scripts同层级，pathlevel递增表示目录层级不断递增。</p>
+                    <p>5、框架用的ajax库默认是axios库，这个库在ie上使用要es6-promise.auto.js这个库,axios都是异步的，同步操作推荐使用promise。</p>
+                    <p>6、默认的一些配置在acbb_basicconfig.acg中。</p>
+                    <p></p>
+                </div>
+                <hr />
+
+                <div class="f-clear m-boxs" id="showinput">
+                    <h2>Input输入框</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-input id="input" maxlength="10" v-model="context.inputvalue" validate="required:true" checkmsg="required:'不能为空'"&gt;&lt;/ap-input&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-input id="input" maxlength="10" v-model="context.inputvalue" validate="required:true" checkmsg="required:'不能为空'"></ap-input>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>type</td><td>input 的类型</td><td>string</td><td>text,hidden,password</td><td>text</td></tr>
+                            <tr><td>style</td><td>input 的自定义style</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>validate</td><td>验证类型</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>checkmsg</td><td>验证提示</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>placeholder</td><td>input 的placeholder</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>classname</td><td>input 的样式</td><td>string</td><td>--</td><td>allpass-input-regular</td></tr>
+                            <tr><td>changefn</td><td>input 的值改变调用回调</td><td>function</td><td>--</td><td>--</td></tr>
+                            <tr><td>maxlength</td><td>input 的最大长度</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>onkeydown</td><td>input 的点击下去的回调</td><td>function</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>input的值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>disabled</td><td>input置灰,true表示置灰,false表示不置灰</td><td>boolean</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+
+                <div class="f-clear m-boxs" id="showbutton">
+                    <h2>按钮类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-buttons type="btn btn-cancel" id="cancel" text="取消"&gt;&lt;/ap-buttons&gt; 
+&lt;ap-button type="button" classname="u-button btn-default" id="cancel" text="取消"&gt;&lt;/ap-button&gt;                                    
+                    </code></pre>
+                    <ap-buttons type="btn btn-cancel" id="cancel" text="取消"></ap-buttons>
+                    <h3>1)表体操作按钮</h3>
+                    <div class="m-btns f-clear">                       
+                        <ap-buttons type="btn btn-confirm" id="confirm" text="确定"></ap-buttons>
+                        <ap-buttons type="btn btn-save" id="save" text="保存"></ap-buttons>
+                        <ap-buttons type="icon icon-back" id="back" text="返回"></ap-buttons>
+                    </div>
+
+                    <h3>2)表体头部搜索按钮</h3>
+                    <div class="m-btns f-clear">
+                        <ap-buttons type="icon icon-search" id="search" text="搜索"></ap-buttons>
+                    </div>
+
+                    <h3>3)表体头部添加删除等按钮</h3>
+                    <div class="m-searchbox f-clear">
+                        <ap-buttons type="icon icon-delete" id="delete" text="删除"></ap-buttons>
+                        <ap-buttons type="icon icon-add" id="add" text="添加"></ap-buttons>
+                        <ap-buttons type="icon icon-import" id="import" text="导入"></ap-buttons>
+                        <ap-buttons type="icon icon-export" id="export" text="导出"></ap-buttons>
+                        <ap-buttons type="icon icon-download" id="download" text="下载"></ap-buttons>
+                        <ap-buttons type="icon icon-upload" id="upload" text="上传"></ap-buttons>
+                    </div>
+
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>type</td><td>ap-button:button的类型 ap-buttons:第一个参数表示类型icon表示图标,btn表示纯button,第二个参数表示样式，第三个参数表示自定义样式</td><td>string</td><td>ap-button:button和a,ap-buttons:btn-confirm btn-save icon-back icon-search icon-add icon-import icon-export icon-download icon-upload</td><td>text</td></tr>
+                            <tr><td>text</td><td>button的按钮文字</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>classname</td><td>样式</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>style</td><td>button的自定义样式</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>按钮的文字</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+
+
+                <div class="f-clear m-boxs" id="showtextarea">
+                    <h2>Textarea类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-textarea id="textarea" cols="20" rows="3"&gt;&lt;/ap-textarea&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-textarea id="textarea" cols="20" rows="3"></ap-textarea>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>rows</td><td>textarea的行数</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>cols</td><td>textarea的列数</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>classname</td><td>class名称</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>style</td><td>textarea的自定义样式</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>maxlength</td><td>textarea的最大长度</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>validate</td><td>验证类型</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>checkmsg</td><td>验证提示</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>changefn</td><td>textarea 的值改变调用回调</td><td>function</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>textarea的值</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="f-clear m-boxs" id="showradiobutton">
+                    <h2>Radiobutton类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-radiobutton id="rb"&gt;&lt;/ap-radiobutton&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-radiobutton id="rb"></ap-radiobutton>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>callback</td><td>点击的回调方法</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>radiobutton的选中值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>options</td><td>radiobutton的选项[{"value":1,"text":"男"},{"value":2,"text":"女"}]这样的json形式传递</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>data</td><td>第二种传值方式，传db传来的json数据</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>dataValueField</td><td>radiobutton的value对应的字段</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>dataTextField</td><td>radiobutton的text对应的字段</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showcheckbox">
+                    <h2>Checkbox类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-checkbox id="cb"&gt;&lt;/ap-checkbox&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-checkbox id="cb"></ap-checkbox>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>callback</td><td>点击的回调方法</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>checkbox的选中值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>options</td><td>checkbox的选项  以[{"value":1,"text":"篮球"}]这样的json形式传递</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>data</td><td>第二种传值方式，传db传来的json数据</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>dataValueField</td><td>checkbox的value对应的字段</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>dataTextField</td><td>checkbox的text对应的字段</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>disabled</td><td>checkbox的置灰</td><td>array</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showselect">
+                    <h2>Select类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-select id="select" :liststyle="context.selectindex"&gt;&lt;/ap-select&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-select id="select" :liststyle="context.selectindex"></ap-select>
+                    </div>
+                    <!--<p> Options select的选项 以[{ value: 1, text: "allpass" },{ value: 2, text: "allpass2" }]这样的json形式传递</p>-->
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>text</td><td>初始显示文字</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>btnstyle</td><td>按钮样式</td><td>object</td><td>--</td><td>--</td></tr>
+                            <tr><td>swidth</td><td>按钮宽度</td><td>string</td><td>--</td><td>111px</td></tr>
+                            <tr><td>liststyle</td><td>列表样式</td><td>object</td><td>--</td><td>--</td></tr>
+                            <tr><td>itemcallback</td><td>选项点击回调</td><td>function</td><td>--</td><td>--</td></tr>
+                            <tr><td>liheight</td><td>li的高度</td><td>string</td><td>--</td><td>26px</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>select的选中value值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>text</td><td>select的选中显示值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>options</td><td>select的选项  以[{"value":1,"text":"篮球"}]这样的json形式传递</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>data</td><td>第二种传值方式，传db传来的json数据</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>dataValueField</td><td>select的value对应的字段</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>dataTextField</td><td>select的text对应的字段</td><td>string</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showswitchbutton">
+                    <h2>SwitchButton</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-switch id="switch"&gt;&lt;/ap-switch&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-switch id="switch"></ap-switch>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>select的选中value值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>options</td><td>select的选项  以[{"value":1,"text":"男"},{"value":2,"text":"女"}]这样的json形式传递</td><td>array</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showdatepicker">
+                    <h2>DatePicker</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-datepicker id="dp" validate="required:true" checkmsg="required:'date不能为空！'"&gt;&lt;/ap-datepicker&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-datepicker id="dp" validate="required:true" checkmsg="required:'date不能为空！'"></ap-datepicker>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>classname</td><td>样式名称</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>validate</td><td>验证类型</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>checkmsg</td><td>验证信息</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>toggle</td><td>弹出位置:up表示向上弹出;down表示向下弹出</td><td>string</td><td>up,down</td><td>down</td></tr>
+                            <tr><td>callback</td><td>回调函数</td><td>function</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>value</td><td>datepicker的选中value值</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>format</td><td>日期的格式化</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>disableddate</td><td>日期置灰以这样的格式{ "type": "<", "value": "2017-01-23" },"<"表示该日期之前的置灰，">"表示该日期之后的置灰</td><td>object</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showtable">
+                    <h2>Table类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-table id="table" &gt;&lt;/ap-table&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-table id="table"></ap-table>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>columns</td>
+                            <td>table列  Columns传入数组 field 字段名 text显示名 width 宽度 textAlign 文字样式 operations 操作列（type操作类型，text文字）</td>
+                            <td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>checkbox</td><td>table的checkbox样式 visible是否显示 width宽度</td><td>object</td><td>--</td><td>--</td></tr>
+                            <tr><td>tabledata</td><td>table的数据</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>key</td><td>table的主键</td><td>string</td><td>--</td><td>--</td></tr>
+                            <tr><td>disabled</td><td>table置灰的行</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>values</td><td>table选中后根据key获取的返回值</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>indexes</td><td>table选中的index值</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>checkboxClick</td><td>选中点击事件</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>operateClick</td><td>操作列点击事件</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>showAllSelected</td><td>是否显示全选按钮</td><td>--</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showpager">
+                    <h2>Pager类</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-pager id="pager" &gt;&lt;/ap-pager&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-pager id="pager"></ap-pager>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>pageCount</td><td>页数</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>currentPage</td><td>目前页数下标</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>callback</td><td>点击回调事件</td><td>--</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showshuffling">
+                    <h2>Shuffling</h2>
+                    <h3>基础示例</h3>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-shuffling id="shuffling" &gt;&lt;/ap-shuffling&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear">
+                        <ap-shuffling id="shuffling"></ap-shuffling>
+                    </div>
+                    <h3>props参数</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>mountedcallback</td><td>渲染完毕回调</td><td>function</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>可选方法</h3>
+                    <table class="table">
+                        <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>可选值</th><th>默认值</th></tr></thead>
+                        <tbody>
+                            <tr><td>options</td><td>图片选项</td><td>array</td><td>--</td><td>--</td></tr>
+                            <tr><td>width</td><td>图片宽度</td><td>--</td><td>--</td><td>--</td></tr>
+                            <tr><td>isClickShow</td><td>点击按钮是否显示</td><td>--</td><td>--</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="f-clear m-boxs" id="showslider">
+                    <h2>Scroll</h2>
+                    <pre data-lang="html"><code class="lang-html">&lt;ap-shuffling id="shuffling" &gt;&lt;/ap-shuffling&gt;                                     
+                    </code></pre>
+                    <div class="m-boxcon f-clear" style="height:100px;width:200px">
+                        <div class="scroll-me" id="scrollMe" data-scroll="scrollMe" >
+                            <div class="relative">
+                                <div class="scroll-list-wrap" id="scrollListWrap">
+                                    <ul class="mydata scroll-list moved" id="scrollList">
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                        <li><a>1</a></li>
+                                    </ul>
+                                </div>
+                                <ap-scroll id="scroll"></ap-scroll>
+                            </div>
+                        </div>
+                    </div>
+                    <p>分数条</p>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>
+
+

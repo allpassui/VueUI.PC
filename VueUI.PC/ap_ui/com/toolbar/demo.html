@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../../Styles/Core/common.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="BottomOperate" class="ajaxLoadDiv">
+        <!--用户反馈及二维码-->
+        <ap-toolbar :fn="fn"></ap-toolbar>
+        <a href="" id="returnTop"></a>
+
+
+    </div> 
+    <!--公用-->
+    <script src="../../ap_scripts/basic/jquery-1.9.1.min.js"></script>
+    <script src="../../ap_scripts/basic/lodash-min.js"></script>
+    <script src="../../ap_scripts/basic/vue.js"></script>
+    <script src="../../ap_scripts/basic/store.js"></script>
+    <script src="../../ap_scripts/basic/layer/layer.js"></script>
+    <script src="../../ap_scripts/basic/layer/LayerPK.js"></script>
+    <script src="../../ap_scripts/loader/acbbLoadScript.js"></script>
+
+    <script src="script/ap_widget_toolbar.js"></script>
+    <script type="text/javascript">
+        var toobar = new Vue({
+            el: "#BottomOperate",
+            data: {
+                fn: function () {
+                    alert(22222);
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

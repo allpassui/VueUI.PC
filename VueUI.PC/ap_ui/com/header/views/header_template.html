@@ -1,0 +1,27 @@
+﻿<div class="g-header" id="mheader">
+    <div class="g-headerinner">
+        <div class="g-wrap">
+            <h1><em></em><span>{{title}}</span></h1>
+            <div class="m-mainnav f-left" v-show="student">
+                <a v-for="item in spans" href="javascritp:void(0);" data-name="nav01" v-on:click="spanClick">{{item.title}}<span></span><i class="f-uparrow"></i></a>
+            </div>
+        <div class="m-topmsg"><a class="msg"><i class="icon-msg"><em class="num">{{infonum}}</em></i></a></div>
+            <div class="m-info" v-on:mouseout="mouseout" v-on:mouseover="mouseover">
+                <div class="g-role">
+                    <div class="m-role f-clear" >
+                    <span><img :src="imgurl"></span>
+                        <em> {{username}} </em>
+                        <i></i>
+                    </div>
+                    <div class="m-roledown" v-show="roledown">
+                        <i></i>
+                        <ul class="f-clear">
+                            <li v-show="student"><a href="">个人中心</a></li>
+                            <li><a v-on:click="logoutClick">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

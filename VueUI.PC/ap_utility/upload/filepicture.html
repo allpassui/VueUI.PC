@@ -1,0 +1,4 @@
+﻿<div id="ImgUpload" class="icon-filepicture btn btn-default" title="图片" v-if="obj.showUploadBtn" v-on:click="_(obj.inputClick)">
+    <input v-show="false" v-if="obj.multiple" type="file" accept="obj.filter" v-on:change="_(obj.getFiles($event))" multiple>
+    <input v-show="false" v-if="!obj.multiple" type="file" accept="obj.filter" v-on:change="_(obj.getFiles($event))">
+</div>

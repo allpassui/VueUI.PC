@@ -1,0 +1,90 @@
+﻿
+.g-left {
+    position: fixed;
+    width: 200px;
+    background: #eee;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+    .g-left .side-nav {
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+
+        .g-left .side-nav ul {
+        }
+
+        .g-left .side-nav .nav-item {
+            line-height: 30px;
+        }
+
+            .g-left .side-nav .nav-item a {
+                font-size: 18px;
+                cursor: pointer;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+        .g-left .side-nav .sub-nav a {
+            font-size: 13px;
+            margin-left: 30px;
+            color: #5e6d82;
+        }
+
+    .g-left .nav-header {
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+
+
+.g-main {
+    float: right;
+    width: 100%;
+}
+
+.g-main .table{
+    display:table;
+    border-spacing:2px;
+    border-color:gray;
+    border-collapse:collapse;
+}
+
+    .g-main .table thead {
+        display:table-header-group;
+        vertical-align:middle;
+        border-color: inherit;
+    }
+
+    .g-main .table th {
+        border-bottom:1px solid #eaeefb;
+        padding:10px;
+        max-width:250px;
+        text-align:left;
+        border-top:1px solid #eaeefb;
+        white-space: nowrap;
+        background-color: #eff2f7;
+    }
+
+    .g-main .table tbody tr {
+        border-bottom:1px solid #eaeefb;
+    }
+        .g-main .table tbody tr td {
+            padding:10px;
+            text-align:left;
+            max-width:250px;
+            font-size:14px;
+        }
+
+
+.g-maincon {
+    margin-left: 220px;
+}
+
+.mydata li {
+    height:20px;
+    margin:0 5px;
+}
+

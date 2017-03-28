@@ -1,0 +1,8 @@
+﻿<!--<a href="javascript:void(0);" v-if="obj.showUploadBtn" class="u-button btn-search" v-on:click="_(obj.inputClick)">上传图片</a>-->
+
+<a href="javascript:void(0);" v-if="obj.showUploadBtn" v-on:click="_(obj.inputClick)"><img id="upImage" src="../../Images/Student/img.png" alt=""/><em>上传</em></a>
+
+<img id="loadingImg" src="../../Images/Common/loading.gif" style="display: none;margin: -10px;">
+
+<input v-show="false" v-if="obj.multiple" type="file" accept="{{obj.filter}}" v-on:change="_(obj.getFiles($event))" multiple>
+<input v-show="false" v-if="!obj.multiple" type="file" accept="{{obj.filter}}" v-on:change="_(obj.getFiles($event))">

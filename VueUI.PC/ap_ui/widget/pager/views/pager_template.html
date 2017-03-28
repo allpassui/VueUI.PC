@@ -1,0 +1,23 @@
+﻿<div class="pages" v-show="endindex > 1">
+    <a class="first"
+       v-bind:class="currentpage == 1 ? 'dis' : ''"
+       v-on:click="prepage()">
+        <i class="icon-pre"></i>
+    </a>
+
+    <a v-if="startindex > 1" v-on:click="preinterval()">...</a>
+
+    <a v-for="pageindex in pages"
+       v-bind:class="pageindex == currentpage ? 'cur' : ''"
+       v-on:click="gotopage(pageindex)">
+        {{ pageindex }}
+    </a>
+
+    <a v-if="endindex < pagecount" v-on:click="nextinterval()">...</a>
+
+    <a class="last"
+       v-bind:class="currentpage == pagecount ? 'dis' : ''"
+       v-on:click="nextpage()">
+        <i class="icon-next"></i>
+    </a>
+</div>

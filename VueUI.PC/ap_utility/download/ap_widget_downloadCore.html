@@ -1,0 +1,39 @@
+﻿<div class="panel panel-default" style="width: 650px;">
+    <div class="panel-heading">文件下载列表</div>
+    <div class="panel-body">
+        <table class="table" style="width: 600px;">
+            <thead>
+                <tr>
+                    <td style="width: 300px;">文件</td>
+                    <td style="width: 150px;">进度</td>
+                    <td style="width: 150px;">操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">文件名</div>
+                            <div class="panel-body">
+                                {{obj.fileNewName}}&nbsp;(<span style="color: red"> {{obj.statusTxt}} </span>)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <progress max="100" value="{{obj.loadedInfo.progress}}"></progress><span>({{obj.loadedInfo.loadedTxt}}/{{obj.loadedInfo.total}}){{obj.loadedInfo.progress}}</span>%
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button v-show="loader.status==3" type="button" class="btn btn-primary" v-on:click="obj.stop()">暂停</button>
+                            <button v-show="loader.status==-1" type="button" class="btn btn-primary" v-on:click="obj.restart()">继续</button>
+                            <button v-show="loader.status<-1" type="button" class="btn btn-primary" v-on:click="obj.restart()">重新开始</button>
+                            <button  v-show="loader.status!=5 && loader.status!=-2" type="button" class="btn btn-primary" v-on:click="obj.cancel()">取消</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="log"></div>
+    </div>
+</div>
+

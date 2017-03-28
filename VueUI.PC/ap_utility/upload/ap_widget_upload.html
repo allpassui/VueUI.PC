@@ -1,0 +1,54 @@
+﻿<div v-bind:style="{ 'width' : obj.width,'height':obj.height}">
+    <div>
+        <div v-bind:class="obj.containerClass">
+            <div>
+                <div v-if="obj.showUploadBtn" v-bind:class="obj.filePickerClass" v-on:click="_(obj.inputClick)">点击选择文件</div>
+                <input v-show="false" v-if="obj.multiple" type="file" accept="{{obj.filter}}" v-on:change="_(obj.getFiles($event))" multiple>
+                <input v-show="false" v-if="!obj.multiple" type="file" accept="{{obj.filter}}" v-on:change="_(obj.getFiles($event))">
+            </div>
+        </div>
+        <span v-if="obj.showDragArea" v-bind:class="obj.dragAreaClass" v-on:dragenter="_(obj.disabledEvent($event))" v-on:dragover="_(obj.disabledEvent($event))"
+            v-on:drop="_(obj.dragDropEvent($event))" v-on:click="_(obj.inputClick)">点击空白或者将文件拖到此处</span>
+    </div>
+    <div v-if="obj.showFootBar" v-bind:class="obj.footBarClass">
+        <div class="info">选中{{obj.fileNums}}个文件，共{{obj.fileSize}}。</div>
+        <div class="btns">
+            <div v-bind:class="obj.uploadBtnClass" v-if="!obj.auto" v-on:click="_(obj.UploadFiles)">开始上传</div>
+            <!-- <div class="webuploader_pick" v-on:click="_(obj.stop)">暂停</div>-->
+        </div>
+    </div>
+    <div v-if="obj.showFileList" v-bind:class="obj.fileListClass">
+        <table>
+            <thead>
+                <tr>
+                    <td style="width: 100px;">文件名</td>
+                    <td style="width: 100px;">上传状态</td>
+                    <td style="width: 300px;">操作</td>
+                    <td style="width: 200px;">进度</td>
+                    <td style="width: 100px;">平均速度</td>
+                    <td style="width: 100px;">计时</td>
+                </tr>
+            </thead>
+            <tbody v-for="item in obj.loaded">
+                <tr>
+                    <td><span style="color: blue;">{{item.name}}</span></td>
+                    <td><span style="color: red;">{{item.statusName}}</span></td>
+                    <td>
+                        <a v-bind:class="obj.pauseBtnClass" href="javascript:void(0);" v-if="item.status==1 && item.needSplit" v-on:click="_(obj.stop(item.index))">暂停&nbsp;</a>
+                        <a v-bind:class="obj.continueBtnClass" href="javascript:void(0);" v-if="item.startStatus==-1" v-on:click="_(obj.restart(item.index))">继续&nbsp;</a>
+                        <!--<a v-bind:class="obj.cancelBtnClass" href="javascript:void(0);" v-if="item.status==1" v-on:click="_(obj.cancel(item.index))">取消&nbsp;</a>-->
+                        <a v-bind:class="obj.removeBtnClass" href="javascript:void(0);" v-if="item.startStatus==-2" v-on:click="_(obj.remove(item.index))">删除&nbsp;</a>
+                    </td>
+                    <td>
+                        <progress v-bind:class="obj.progressClass" max="100" v-bind:value="item.progress"></progress><span>{{item.progress}}% </span>&nbsp;&nbsp;
+                    </td>
+                    <td>{{item.avgSpeed}}</td>
+                    <td>{{item.totalTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="upload_inf"></div>
+<div class="log"></div>

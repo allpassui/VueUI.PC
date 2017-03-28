@@ -1,0 +1,90 @@
+﻿<div class="main">
+    <div class="tools btn-group">
+        <div class="icon-print btn btn-default" title="打印" v-on:click="printDoc"></div>
+        <div class="icon-undo btn btn-default" title="撤销" v-on:click="undo"></div>
+        <div class="icon-redo btn btn-default" title="重做" v-on:click="redo"></div>
+        <div class="icon-bold btn btn-default" title="加粗" v-on:click="bold"></div>
+        <div class="icon-underline btn btn-default" title="下划线" v-on:click="underline"></div>
+        <div class="icon-fontitalics btn btn-default" title="倾斜" v-on:click="italic"></div>
+
+        <div class="icon-ziti btn btn-default" title="字体" v-on:click="toggleFontName">
+            <ul class="dropdown-menu" v-show="showfontname">
+                <li v-for="item in fontname" v-on:click="fontName(item.value)"><a>{{item.text}}</a></li>
+            </ul>
+        </div>
+        <div class="icon-zitidaxiao btn btn-default" title="字体大小" v-on:click="toggleFontSize">
+            <ul class="dropdown-menu" v-show="showfontsize">
+                <li v-for="item in fontsize" v-on:click="fontSize(item.value)"><a >{{item.text}}</a></li>
+            </ul>
+        </div>
+        <div class="icon-zitiyanse btn btn-default" title="字体颜色" v-on:click="toggleForeColor">
+            <div id="paletteCntr" class="activeColour" style="width: 335px; overflow: hidden;" v-show="showforecolor">
+                <div id="colorpellete">
+                    <ul id="color_ui" >
+                        <li style="width: 145px; display: block; height: 25px;"><div>字体颜色</div></li>
+                        <li v-for="item in forecolor" :style="item.style" v-on:click="foreColor(item.style)"></li>
+                        <!--<li style="width: 145px; display: block; height: 5px;"></li>-->
+                    </ul>
+                </div>
+                <div id="bg_colorpellete" >
+                    <ul id="bgcolor_ui" style="margin-left:0px">
+                        <li style="width: 145px; display: block; height: 25px;"><div>背景颜色</div></li>
+                        <li v-for="item in forecolor" :style="item.style" v-on:click="backColor(item.style)"></li>
+                        <!--<li style="width: 145px; display: block; height: 5px;"></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="icon-paragraphleft btn btn-default" title="左对齐" v-on:click="justifyLeft"></div>
+        <div class="icon-paragraphcenter btn btn-default" title="居中对齐" v-on:click="justifyCenter"></div>
+        <div class="icon-paragraphright btn btn-default" title="右对齐" v-on:click="justifyRight"></div>
+        <div class="icon-paragraphjustify btn btn-default" title="两端对齐" v-on:click="justifyFull"></div>
+
+        <div class="icon-icxiangzuosuojin24px btn btn-default" title="左缩进" v-on:click="indent"></div>
+        <div class="icon-icxiangyousuojin24px btn btn-default" title="取消缩进" v-on:click="outdent"></div>
+        <div class="icon-quotesright btn btn-default" title="引用" v-on:click="blockquote"></div>
+        <div class="icon-listnumbered btn btn-default" title="序列列表" v-on:click="insertOrderedList"></div>
+        <div class="icon-list2 btn btn-default" title="无序列表" v-on:click="insertUnorderedList"></div>
+
+        <!--<div class="icon-filepicture btn btn-default" title="图片" v-on:click="picture">  
+        </div>-->
+        <div id="ImgUpload"></div>  
+        <!--<div class="icon-fileplay btn btn-default" title="视频" v-on:click="video"></div>-->
+        <!--<input type="file" id="upPic" style="display: none;" />-->
+
+        <div class="icon-iconfonttext btn btn-default" title="全选" v-on:click="selectall"></div>
+        <div class="icon-clear btn btn-default" title="清除样式" v-on:click="removeformat"></div>
+
+        <div class="icon-link btn btn-default" title="插入链接" v-on:click="createLink"></div>
+        <div class="icon-unlink btn btn-default" title="取消链接" v-on:click="unlink"></div>
+        <div class="icon-embed2 btn btn-default" title="html转化" v-on:click="toHtml"></div>
+        <!--<img class="rte-button" src="img/emotion_smile.png" style="width: 18px; height: 18px;" title="动画表情">
+        <img class="rte-button" src="icons/clean.gif" title="清空" v-on:click="clearDoc">
+        <img class="rte-button" src="icons/print.png" title="打印" v-on:click="printDoc">
+        <img class="rte-button" src="icons/undo.gif" title="撤销" v-on:click="undo">
+        <img class="rte-button" src="icons/redo.gif" title="重做" v-on:click="redo">
+        <img class="rte-button" src="icons/format.png" title="清除格式" v-on:click="_(obj.removeFormat)">
+        <img class="rte-button" src="icons/bold.gif" title="加粗" v-on:click="_(obj.bold)">
+        <img class="rte-button" src="icons/italic.gif" title="斜体" v-on:click="_(obj.italic)">
+        <img class="rte-button" src="icons/underline.gif" title="下划线" v-on:click="_(obj.underline)">
+        <img class="rte-button" src="icons/justifyleft.gif" title="左对齐" v-on:click="_(obj.justifyLeft)">
+        <img class="rte-button" src="icons/justifycenter.gif" title="居中对齐" v-on:click="_(obj.justifyCenter)">
+        <img class="rte-button" src="icons/justifyright.gif" title="右对齐" v-on:click="_(obj.justifyRight)">
+        <img class="rte-button" src="icons/numberedlist.gif" title="有序列表" v-on:click="_(obj.insertOrderedList)">
+        <img class="rte-button" src="icons/dottedlist.gif" title="无序列表" v-on:click="_(obj.insertUnorderedList)">
+        <img class="rte-button" src="icons/quote.gif" alt="blockquote" title="引用" v-on:click="_(obj.formatBlock)">
+        <img class="rte-button" src="icons/outdent.gif" title="删除缩进" v-on:click="_(obj.outdent)">
+        <img class="rte-button" src="icons/indent.gif" title="添加缩进" v-on:click="_(obj.indent)">
+        <img class="rte-button" src="icons/hyperlink.gif" title="超链接" v-on:click="_(obj.createLink)">
+        <img class="rte-button" src="icons/picture.ico" title="插入本地图片" style="width: 18px; height: 18px;" v-on:click="_(obj.picture)">
+        <img class="rte-button" src="icons/vedio.ico" title="插入本地视频" style="width: 18px; height: 18px;" v-on:click="_(obj.video)">
+        <img class="rte-button" src="icons/file.ico" title="插入本地文件" style="width: 18px; height: 18px;" v-on:click="_(obj.upFile)">
+        <img class="rte-button" src="icons/script.ico" title="插入脚本" style="width: 18px; height: 18px;" v-on:click="_(obj.upScript)">
+        <input type="file" id="upPic" style="display: none;" />-->
+
+    </div>
+    <div class="">
+        <div contenteditable="true" id="input-edit" class="editor" @mouseup="doMouseout"></div>
+        <!--<input  class="form-control" id="input-edit" placeholder="请输入内容">-->
+    </div>
+</div>

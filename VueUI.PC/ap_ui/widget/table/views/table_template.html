@@ -1,0 +1,27 @@
+﻿<table width="100%" border="0" cellspacing="0" cellpadding="0" class="m-tableList">
+    <thead>
+        <tr>
+            <th class="check" v-show="checkbox.visible" v-bind:style="{width:checkbox.width}"><i v-if="showallselected" :class="{'u-checkbox':true,'icon-checkbox':true,'icon-checkboxsel':allchecked}" v-on:click="selectallclick"></i></th>
+            <th v-for="c in columns" v-bind:style="{width:c.width,textAlign:c.textAlign}">{{c.text}}</th>
+        </tr>
+    </thead>
+    <tbody class="tbody">
+        <tr v-for="(data,index) in tabledata" v-bind:class="index % 2 == 1 ? 'cur' : ''" v-show="tabledata.length">
+            <td v-show="checkbox.visible"><i :class="{'u-checkbox':true,'icon-checkbox':true,'icon-checkboxsel':checked[index].checked,'dis':disabled[index]?disabled[index].disabled:''}" :style="{width:checkbox.width}" v-on:click="checkboxclick(index,data,$event)"></i></td>
+            <template v-for="c in columns" >
+                <td v-if='(c["field"]!="operate")&&(c.fn)' v-bind:title="c.title?data[c['field']]:''" v-bind:class="c.classname" v-bind:style="{textAlign:c.textAlign}" v-html="c.fn?c.fn(data[c['field']],index,tabledata):data[c['field']]"></td>
+                <td v-if='(c["field"]!="operate")&&(!c.fn)' v-bind:title="c.title?data[c['field']]:''" v-bind:class="c.classname" v-bind:style="{textAlign:c.textAlign}" v-text="c.maxlength?(data[c['field']].length>c.maxlength?(data[c['field']].substring(0,c.maxlength)+'...'):data[c['field']]):data[c['field']]"></td>
+                <td v-bind:style="{textAlign:c.textAlign}" v-if='c["field"]=="operate"'>
+                    <a v-if="c.fn?c.fn(o.type,index,tabledata):true" style="margin-right:3px" v-for="o in c.operations" v-on:click='operateclick(index,o.type,$event)' v-bind:title="o.text">{{o.text}}</a>
+                </td>
+            </template>           
+        </tr>
+        <tr v-show="(!tabledata.length)&&(!init)" style="display:none;">
+            <td :colspan="columns.length+1">
+                <div class="m-nodata">
+                    <div class="u-nodata"></div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

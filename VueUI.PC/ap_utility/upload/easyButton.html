@@ -1,0 +1,4 @@
+﻿<a href="javascript:void(0);" v-if="obj.showUploadBtn" class="u-button btn-search" v-on:click="_(obj.inputClick)">选择文件</a>
+<img id="loadingImg" src="../../Images/Common/loading.gif" style="display: none;margin-top: 10px;">
+<input v-show="false" v-if="obj.multiple" type="file" accept="{{obj.filter}}" v-on:change="_(obj.getFiles($event))" multiple>
+<input v-show="false" v-if="!obj.multiple" type="file" accept="{{obj.filter}}" v-on:change="_(obj.getFiles($event))">

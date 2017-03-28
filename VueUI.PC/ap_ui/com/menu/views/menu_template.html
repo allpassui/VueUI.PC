@@ -1,0 +1,11 @@
+﻿<div class="g-leftside f-left">
+    <h3> {{title}} </h3>
+    <ul class="m-sidebar">
+        <li v-for="(item,index) in options" :class="index==defaultoption?'cur':''" v-on:click="menuClick(index,item.text,$event)"><a>{{item.text}}<i v-show="options[index].childoptions"></i></a></li>
+        <li class="m-subnav" v-show="showsubnav">
+            <ul>
+                <li v-for="(childitem,index) in childlist" v-on:click="itemClick(index,$event)"><a>{{childitem.text}}</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

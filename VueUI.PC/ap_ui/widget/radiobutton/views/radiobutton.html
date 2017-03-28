@@ -1,0 +1,5 @@
+﻿<div class="allpass-rb-outer">
+    <label v-for="(value,index) in options" class="formLabel" v-on:click="rdclick(value.value)">
+        <i :class="radioclass(index)"></i>{{value.text}}
+    </label>
+</div>

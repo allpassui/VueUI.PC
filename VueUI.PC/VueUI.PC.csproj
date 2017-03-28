@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C4066836-D8CC-4E10-9D1F-E8F630E5A069}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VueUI.PC</RootNamespace>
+    <AssemblyName>VueUI.PC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1010, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net40\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net40\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net40\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net40\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net40\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net40\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net40\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.24\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ap_core\ap_page.js" />
+    <Content Include="ap_core\ap_ui.js" />
+    <Content Include="ap_core\ap_worker.js" />
+    <Content Include="ap_scripts\basic\axios.js" />
+    <Content Include="ap_scripts\basic\es6-promise.auto.js" />
+    <Content Include="ap_scripts\basic\jquery-1.9.1.min.js" />
+    <Content Include="ap_scripts\basic\layer\extend\layer.ext.js" />
+    <Content Include="ap_scripts\basic\layer\laydate\laydate.js" />
+    <Content Include="ap_scripts\basic\layer\laydate\need\laydate.css" />
+    <Content Include="ap_scripts\basic\layer\laydate\skins\dahong\icon.png" />
+    <Content Include="ap_scripts\basic\layer\laydate\skins\dahong\laydate.css" />
+    <Content Include="ap_scripts\basic\layer\laydate\skins\default\icon.png" />
+    <Content Include="ap_scripts\basic\layer\laydate\skins\default\laydate.css" />
+    <Content Include="ap_scripts\basic\layer\laydate\skins\molv\icon.png" />
+    <Content Include="ap_scripts\basic\layer\laydate\skins\molv\laydate.css" />
+    <Content Include="ap_scripts\basic\layer\layer.js" />
+    <Content Include="ap_scripts\basic\layer\layer.min.js" />
+    <Content Include="ap_scripts\basic\layer\LayerPK.js" />
+    <Content Include="ap_scripts\basic\layer\Layerui.js" />
+    <Content Include="ap_scripts\basic\layer\skin\default\close.png" />
+    <Content Include="ap_scripts\basic\layer\skin\default\icon-ext.png" />
+    <Content Include="ap_scripts\basic\layer\skin\default\icon.png" />
+    <Content Include="ap_scripts\basic\layer\skin\default\icon_ext.png" />
+    <Content Include="ap_scripts\basic\layer\skin\default\loading-0.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\loading-1.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\loading-2.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\textbg.png" />
+    <Content Include="ap_scripts\basic\layer\skin\default\xubox_ico0.png" />
+    <Content Include="ap_scripts\basic\layer\skin\default\xubox_loading0.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\xubox_loading1.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\xubox_loading2.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\xubox_loading3.gif" />
+    <Content Include="ap_scripts\basic\layer\skin\default\xubox_title0.png" />
+    <Content Include="ap_scripts\basic\layer\skin\layer.css" />
+    <Content Include="ap_scripts\basic\layer\skin\layer.ext.css" />
+    <Content Include="ap_scripts\basic\lodash-min.js" />
+    <Content Include="ap_scripts\basic\lodash.js" />
+    <Content Include="ap_scripts\basic\vue.js" />
+    <Content Include="ap_scripts\basic\vue.min.js" />
+    <Content Include="ap_ui\com\header\demo.html" />
+    <Content Include="ap_ui\com\header\styles\header.css" />
+    <Content Include="ap_ui\com\header\viewmodels\ap_header.js" />
+    <Content Include="ap_ui\com\header\views\header_template.html" />
+    <Content Include="ap_ui\com\menu\demo.html" />
+    <Content Include="ap_ui\com\menu\styles\ap_widget_menu.css" />
+    <Content Include="ap_ui\com\menu\viewmodels\ap_menu.js" />
+    <Content Include="ap_ui\com\menu\views\menu_template.html" />
+    <Content Include="ap_ui\com\toolbar\demo.html" />
+    <Content Include="ap_ui\com\toolbar\viewmodels\ap_toolbar.js" />
+    <Content Include="ap_ui\com\toolbar\views\toolbar_template.html" />
+    <Content Include="ap_ui\images\datepicker\datePicker.gif" />
+    <Content Include="ap_ui\images\datepicker\img.gif" />
+    <Content Include="ap_ui\images\datepicker\img.png" />
+    <Content Include="ap_ui\images\editor\emotion_smile.png" />
+    <Content Include="ap_ui\styles\base.css" />
+    <Content Include="ap_ui\styles\demo.css" />
+    <Content Include="ap_ui\styles\style.css" />
+    <Content Include="ap_ui\widget\button\viewmodels\ap_button.js" />
+    <Content Include="ap_ui\widget\button\viewmodels\ap_buttons.js" />
+    <Content Include="ap_ui\widget\button\views\a_template.html" />
+    <Content Include="ap_ui\widget\button\views\button_template.html" />
+    <Content Include="ap_ui\widget\button\views\icon_template.html" />
+    <Content Include="ap_ui\widget\checkbox\viewmodels\ap_checkbox.js" />
+    <Content Include="ap_ui\widget\datepicker\viewmodels\ap_datepicker.js" />
+    <Content Include="ap_ui\widget\datepicker\views\template.html" />
+    <Content Include="ap_ui\widget\editor\css\ap_widget_editor.css" />
+    <Content Include="ap_ui\widget\editor\css\iconfont.css" />
+    <Content Include="ap_ui\widget\editor\icons\iconfont.svg" />
+    <Content Include="ap_ui\widget\editor\img\emotion_smile.png" />
+    <Content Include="ap_ui\widget\editor\viewmodels\ap_editor.js" />
+    <Content Include="ap_ui\widget\editor\views\editor_template.html" />
+    <Content Include="ap_ui\widget\input\viewmodels\ap_input.js" />
+    <Content Include="ap_ui\widget\pager\viewmodels\ap_pager.js" />
+    <Content Include="ap_ui\widget\pager\views\pager_template.html" />
+    <Content Include="ap_ui\widget\radiobutton\viewmodels\ap_radiobutton.js" />
+    <Content Include="ap_ui\widget\radiobutton\views\radiobutton.html" />
+    <Content Include="ap_ui\widget\scroll\viewmodels\ap_scroll.js" />
+    <Content Include="ap_ui\widget\scroll\views\template.html" />
+    <Content Include="ap_ui\widget\select\viewmodels\ap_select.js" />
+    <Content Include="ap_ui\widget\shuffling\viewmodels\ap_shuffling.js" />
+    <Content Include="ap_ui\widget\shuffling\views\template.html" />
+    <Content Include="ap_ui\widget\slider\viewmodels\ap_slider.js" />
+    <Content Include="ap_ui\widget\switchbutton\viewmodels\ap_switch.js" />
+    <Content Include="ap_ui\widget\table\viewmodels\ap_table.js" />
+    <Content Include="ap_ui\widget\table\views\table_template.html" />
+    <Content Include="ap_ui\widget\textarea\viewmodels\ap_textarea.js" />
+    <Content Include="ap_ui\widget\validate\viewmodels\ap_validate.js" />
+    <Content Include="ap_utility\ajax\ap_ajax.js" />
+    <Content Include="ap_utility\ajax\ap_ajaxpackage.js" />
+    <Content Include="ap_utility\dbp\ap_dbp.js" />
+    <Content Include="ap_utility\db\ap_db.js" />
+    <Content Include="ap_utility\download\ap_download.js" />
+    <Content Include="ap_utility\download\ap_downloadpackage.js" />
+    <Content Include="ap_utility\download\ap_widget_download.html" />
+    <Content Include="ap_utility\download\ap_widget_downloadCore.html" />
+    <Content Include="ap_utility\download\ap_widget_downloadPreview.html" />
+    <Content Include="ap_utility\download\ap_widget_testdownload.html" />
+    <Content Include="ap_utility\template\ap_template.js" />
+    <Content Include="ap_utility\upload\ap_upload.js" />
+    <Content Include="ap_utility\upload\ap_uploadpackage.js" />
+    <Content Include="ap_utility\upload\ap_widget_upload.html" />
+    <Content Include="ap_utility\upload\easyButton.html" />
+    <Content Include="ap_utility\upload\filepicture.html" />
+    <Content Include="ap_utility\upload\imageButton.html" />
+    <Content Include="ap_utility\upload\templateImg.html" />
+    <Content Include="ap_utility\upload\uploadImage.html" />
+    <Content Include="ap_utility\upload\uploadResources.html" />
+    <Content Include="ap_utility\utils\ap_utils.js" />
+    <Content Include="ap_utility\video\ap_video.js" />
+    <Content Include="ap_utility\video\html5media.min.js" />
+    <Content Include="ap_utility\video\video.html" />
+    <Content Include="ap_utility\video\video1.gif" />
+    <Content Include="ap_utility\video\video3.gif" />
+    <Content Include="demo\images\l.jpg" />
+    <Content Include="demo\images\shadow.jpg" />
+    <Content Include="demo\viewmodels\demo.js" />
+    <Content Include="demo\views\demo.html" />
+    <Content Include="dist\style.css" />
+    <Content Include="dist\index.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ap_ui\widget\editor\icons\iconfont.eot" />
+    <Content Include="ap_ui\widget\editor\icons\iconfont.ttf" />
+    <Content Include="ap_ui\widget\editor\icons\iconfont.woff" />
+    <Content Include="ap_utility\ajax\ap_ajax.js.map" />
+    <Content Include="ap_utility\ajax\ap_ajaxpackage.js.map" />
+    <Content Include="ap_utility\db\ap_db.js.map" />
+    <Content Include="ap_utility\dbp\ap_dbp.js.map" />
+    <Content Include="ap_utility\download\ap_download.js.map" />
+    <Content Include="ap_utility\download\ap_downloadpackage.js.map" />
+    <Content Include="ap_utility\template\ap_template.js.map" />
+    <Content Include="ap_utility\upload\ap_upload.js.map" />
+    <Content Include="ap_utility\upload\ap_uploadpackage.js.map" />
+    <Content Include="ap_utility\utils\ap_utils.js.map" />
+    <Content Include="ap_scripts\basic\layer\layer.min.js.map" />
+    <Content Include="package.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ap_core\ap_page.ts" />
+    <TypeScriptCompile Include="ap_core\ap_ui.ts" />
+    <TypeScriptCompile Include="ap_core\ap_worker.ts" />
+    <TypeScriptCompile Include="ap_scripts\basic\axios.d.ts" />
+    <TypeScriptCompile Include="ap_scripts\basic\vue.d.ts" />
+    <TypeScriptCompile Include="ap_ui\com\header\viewmodels\ap_header.ts" />
+    <TypeScriptCompile Include="ap_ui\com\menu\viewmodels\ap_menu.ts" />
+    <TypeScriptCompile Include="ap_ui\com\toolbar\viewmodels\ap_toolbar.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\button\viewmodels\ap_button.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\button\viewmodels\ap_buttons.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\checkbox\viewmodels\ap_checkbox.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\datepicker\viewmodels\ap_datepicker.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\editor\viewmodels\ap_editor.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\input\viewmodels\ap_input.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\pager\viewmodels\ap_pager.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\radiobutton\viewmodels\ap_radiobutton.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\scroll\viewmodels\ap_scroll.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\select\viewmodels\ap_select.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\shuffling\viewmodels\ap_shuffling.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\slider\viewmodels\ap_slider.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\switchbutton\viewmodels\ap_switch.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\table\viewmodels\ap_table.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\textarea\viewmodels\ap_textarea.ts" />
+    <TypeScriptCompile Include="ap_ui\widget\validate\viewmodels\ap_validate.ts" />
+    <TypeScriptCompile Include="ap_utility\ajax\ap_ajax.ts" />
+    <TypeScriptCompile Include="ap_utility\ajax\ap_ajaxpackage.ts" />
+    <TypeScriptCompile Include="ap_utility\dbp\ap_dbp.ts" />
+    <TypeScriptCompile Include="ap_utility\db\ap_db.ts" />
+    <TypeScriptCompile Include="ap_utility\download\ap_download.ts" />
+    <TypeScriptCompile Include="ap_utility\download\ap_downloadpackage.ts" />
+    <TypeScriptCompile Include="ap_utility\template\ap_template.ts" />
+    <TypeScriptCompile Include="ap_utility\upload\ap_upload.ts" />
+    <TypeScriptCompile Include="ap_utility\upload\ap_uploadpackage.ts" />
+    <TypeScriptCompile Include="ap_utility\utils\ap_utils.ts" />
+    <TypeScriptCompile Include="ap_utility\video\ap_video.ts" />
+    <TypeScriptCompile Include="demo\viewmodels\demo.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ap_ui\iconfont\" />
+    <Folder Include="ap_ui\widget\checkbox\views\" />
+    <Folder Include="ap_ui\widget\editor\upload\" />
+    <Folder Include="ap_ui\widget\input\views\" />
+    <Folder Include="ap_ui\widget\select\views\" />
+    <Folder Include="ap_ui\widget\switchbutton\views\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17866</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:17866/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+﻿<div class="shuffling">
+    <ul class="oUlplay" v-bind:style="{'width':width*options.length+'px'}">
+        <li v-for="(item,index) in options" v-bind:style="{'width':width+'px'}"><a href="javascript:void(0)"><img v-bind:src="options[index]" alt=""></a></li>
+    </ul>
+    <div class="samllTitle">
+        <ul>
+            <li v-for="(item,index) in toptions" v-on:click="minEleClickMove(index)"></li>
+        </ul>
+    </div>
+    <span class="pre" v-on:click="preClick" v-if="isClickShow"></span>
+    <span class="next" v-on:click="nextClick" v-if="isClickShow"></span>
+</div>

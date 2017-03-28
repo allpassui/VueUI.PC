@@ -1,0 +1,31 @@
+﻿<div v-if="!obj.flag" style="display:inline-block;text-align:center;vertical-align: middle;width:{{obj.width}}px;height:{{obj.height}}px;margin:0 auto;border:1px solid green">
+    <img src="../ap-widget-video/video3.gif" style="vertical-align: middle" />
+</div>
+<div v-if="obj.flag">
+    <div v-if="!obj.isFlv">
+        <video controls preload="auto" width="{{obj.width}}" height="{{obj.height}}"
+               poster="{{obj.videoPicture}}">
+            <source v-if="obj.mp4Url" src="{{obj.mp4Url}}" type="video/mp4">
+            <source v-if="obj.webmUrl" src="{{obj.webmUrl}}" type="video/webm">
+            <source v-if="obj.ogvUrl" src="{{obj.ogvUrl}}" type="video/ogg">
+        </video>
+    </div>
+    <div v-if="obj.isFlv">
+        <object class id="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="{{obj.width}}" height="{{obj.height}}">
+            <param name="movie" value="flvplayer.swf">
+            <param name="quality" value="high">
+            <param name="allowFullScreen" value="true">
+            <param v-if="obj.flvUrl" name="FlashVars" value="vcastr_file={{obj.flvUrl}}&BufferTime=3&IsAutoPlay=0">
+            <embed v-if="obj.flvUrl" src="flvplayer.swf" allowfullscreen="true" flashvars="vcastr_file={{obj.flvUrl}}&IsAutoPlay=0" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="300" height="240"></embed>
+        </object>
+    </div>
+</div>
+
+<!--<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="307" height="182">
+    <param name="movie" value="http://www.78.cn/style/vcastr.swf">
+    <param name="quality" value="high">
+    <param name="menu" value="false">
+    <param name="wmode" value="opaque">
+    <param name="FlashVars" value="vcastr_file=http://v.78.cn/kuailexing/sp.flv&vcastr_title=快乐星汉堡&vcastr_config=0:自动播放|1:连续播放|100:默认音量|0:控制栏位置|2:控制栏显示|0x000033:主体颜色|60:主体透明度|0x66ff00:光晕颜色|0xffffff:图标颜色|0xffffff:文字颜色|:logo文字|:logo地址|end.flv:结束swf地址">
+    <embed src="/style/vcastr.swf" wmode="opaque" flashvars="vcastr_file=http://v.78.cn/kuailexing/sp.flv&vcastr_title=快乐星汉堡&vcastr_config=0:自动播放|1:连续播放|100:默认音量|0:控制栏位置|2:控制栏显示|0x000033:主体颜色|60:主体透明度|0x66ff00:光晕颜色|0xffffff:图标颜色|0xffffff:文字颜色|:logo文字|:logo地址|end.flv:结束swf地址" menu="false" quality="high" width="307" height="182" type="application/x-shockwave-flash" pluginspage=" http//www.macromedia.com/go/getflashplayer">
+</object>-->

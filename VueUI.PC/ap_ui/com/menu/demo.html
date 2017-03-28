@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="styles/ap_widget_menu.css" rel="stylesheet" />
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body >
+    <div id="test"><ap-menu :options="options" title="教师管理"></ap-menu></div>
+    
+</body>
+</html>
+<script src="../../ap_scripts/basic/jquery-1.9.1.min.js"></script>
+<script src="../../ap_scripts/basic/vue.js"></script>
+<script src="scripts/ap_widget_menu.js"></script>
+<script>
+    var mymenu = new Vue({
+        el: "#test",
+        data: {
+            options: [{ href: '../allpassrb/radiobutton.html', text: '班级管理' },
+                { href: '../allpassrb/radiobutton.html', text: '学生管理', childoptions: [{ href: '../allpassrb/radiobutton.html', text: '学生管理丫丫丫' }, { href: '../allpassrb/radiobutton.html', text: '学生管理丫丫丫' }] },
+                { href: '', text: '数据管理', child: true, childoptions: [{ href: '../allpassrb/radiobutton.html', text: '数据管理一' }, { href: '../allpassrb/radiobutton.html', text: '数据管理二' }] }]
+        }
+    })
+</script>

@@ -1,0 +1,31 @@
+﻿<div class="panel panel-default" style="width: 450px;">
+    <div class="panel-heading">文件下载列表</div>
+    <div class="panel-body">
+        <table class="table" style="width: 420px;">
+            <thead>
+                <tr>
+                    <td style="width: 250px;">文件</td>
+                    <td style="width: 200px;">进度</td>
+                </tr>
+            </thead>
+            <tbody v-for="loader in obj.downloaders">
+                <tr>
+                    <td>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">文件名</div>
+                            <div class="panel-body">
+                                {{loader.showName}}&nbsp;(<span style="color: red"> {{loader.statusTxt}} </span>)
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <progress max="100" value="{{loader.loadedInfo.progress}}"></progress><span>&nbsp;{{loader.loadedInfo.progress}}</span>%
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <div class="log"></div>
+    </div>
+</div>
+

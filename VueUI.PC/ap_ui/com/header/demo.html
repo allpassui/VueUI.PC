@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="styles/ap_widget_header.css" rel="stylesheet" />
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body >
+    <div id="test"><ap-header title="教师管理"></ap-header></div>   
+</body>
+</html>
+<script src="../../ap_scripts/basic/jquery-1.9.1.min.js"></script>
+<script src="../../ap_scripts/basic/vue.js"></script>
+<script src="scripts/ap_widget_header.js"></script>
+<script>
+    var myheader = new Vue({
+        el: "#test",
+        data: {
+           aa:true
+        }
+    })
+</script>
