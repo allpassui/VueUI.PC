@@ -1,2 +1,0 @@
-E:\VueUI.PC\VueUI.PC\obj\Debug\VueUI.PC.csproj.App.config
-E:\VueUI.PC\VueUI.PC\obj\Debug\VueUI.PC.csprojResolveAssemblyReference.cache
