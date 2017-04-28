@@ -21,7 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -206,30 +206,6 @@
     <Content Include="ap_ui\widget\validate\viewmodels\ap_validate.js" />
     <Content Include="ap_utility\ajax\ap_ajax.js" />
     <Content Include="ap_utility\ajax\ap_ajaxpackage.js" />
-    <Content Include="ap_utility\dbp\ap_dbp.js" />
-    <Content Include="ap_utility\db\ap_db.js" />
-    <Content Include="ap_utility\download\ap_download.js" />
-    <Content Include="ap_utility\download\ap_downloadpackage.js" />
-    <Content Include="ap_utility\download\ap_widget_download.html" />
-    <Content Include="ap_utility\download\ap_widget_downloadCore.html" />
-    <Content Include="ap_utility\download\ap_widget_downloadPreview.html" />
-    <Content Include="ap_utility\download\ap_widget_testdownload.html" />
-    <Content Include="ap_utility\template\ap_template.js" />
-    <Content Include="ap_utility\upload\ap_upload.js" />
-    <Content Include="ap_utility\upload\ap_uploadpackage.js" />
-    <Content Include="ap_utility\upload\ap_widget_upload.html" />
-    <Content Include="ap_utility\upload\easyButton.html" />
-    <Content Include="ap_utility\upload\filepicture.html" />
-    <Content Include="ap_utility\upload\imageButton.html" />
-    <Content Include="ap_utility\upload\templateImg.html" />
-    <Content Include="ap_utility\upload\uploadImage.html" />
-    <Content Include="ap_utility\upload\uploadResources.html" />
-    <Content Include="ap_utility\utils\ap_utils.js" />
-    <Content Include="ap_utility\video\ap_video.js" />
-    <Content Include="ap_utility\video\html5media.min.js" />
-    <Content Include="ap_utility\video\video.html" />
-    <Content Include="ap_utility\video\video1.gif" />
-    <Content Include="ap_utility\video\video3.gif" />
     <Content Include="demo\images\l.jpg" />
     <Content Include="demo\images\shadow.jpg" />
     <Content Include="demo\viewmodels\demo.js" />
@@ -249,14 +225,6 @@
     <Content Include="ap_ui\widget\editor\icons\iconfont.woff" />
     <Content Include="ap_utility\ajax\ap_ajax.js.map" />
     <Content Include="ap_utility\ajax\ap_ajaxpackage.js.map" />
-    <Content Include="ap_utility\db\ap_db.js.map" />
-    <Content Include="ap_utility\dbp\ap_dbp.js.map" />
-    <Content Include="ap_utility\download\ap_download.js.map" />
-    <Content Include="ap_utility\download\ap_downloadpackage.js.map" />
-    <Content Include="ap_utility\template\ap_template.js.map" />
-    <Content Include="ap_utility\upload\ap_upload.js.map" />
-    <Content Include="ap_utility\upload\ap_uploadpackage.js.map" />
-    <Content Include="ap_utility\utils\ap_utils.js.map" />
     <Content Include="ap_scripts\basic\layer\layer.min.js.map" />
     <Content Include="package.json" />
     <None Include="Web.Debug.config">
@@ -293,15 +261,6 @@
     <TypeScriptCompile Include="ap_ui\widget\validate\viewmodels\ap_validate.ts" />
     <TypeScriptCompile Include="ap_utility\ajax\ap_ajax.ts" />
     <TypeScriptCompile Include="ap_utility\ajax\ap_ajaxpackage.ts" />
-    <TypeScriptCompile Include="ap_utility\dbp\ap_dbp.ts" />
-    <TypeScriptCompile Include="ap_utility\db\ap_db.ts" />
-    <TypeScriptCompile Include="ap_utility\download\ap_download.ts" />
-    <TypeScriptCompile Include="ap_utility\download\ap_downloadpackage.ts" />
-    <TypeScriptCompile Include="ap_utility\template\ap_template.ts" />
-    <TypeScriptCompile Include="ap_utility\upload\ap_upload.ts" />
-    <TypeScriptCompile Include="ap_utility\upload\ap_uploadpackage.ts" />
-    <TypeScriptCompile Include="ap_utility\utils\ap_utils.ts" />
-    <TypeScriptCompile Include="ap_utility\video\ap_video.ts" />
     <TypeScriptCompile Include="demo\viewmodels\demo.ts" />
   </ItemGroup>
   <ItemGroup>

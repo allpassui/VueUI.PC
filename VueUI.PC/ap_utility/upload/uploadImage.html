@@ -1,5 +1,0 @@
-﻿<div id="ImgUpload">
-    <a href="javascript:void(0)" v-if="obj.showUploadBtn" v-on:click="_(obj.inputClick)"><img src="../Img/Admin/logoupload.png"></a>
-    <input v-show="false" v-if="obj.multiple" type="file" accept="obj.filter" v-on:change="_(obj.getFiles($event))" multiple>
-    <input v-show="false" v-if="!obj.multiple" type="file" accept="obj.filter" v-on:change="_(obj.getFiles($event))">
-</div>
